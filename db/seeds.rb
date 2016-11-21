@@ -52,3 +52,44 @@ if Shop::Country.count == 0
     c.fetch(:states).each {|s| Shop::State.create country: cry, name: s}
   end
 end
+
+if Shop::ShippingMethod.count == 0
+  [
+      {
+          name: 'UPS',
+          tracking: 'https://www.ups.com/WebTracking/track',
+      },
+      {
+          name: 'USPS',
+          tracking: 'https://tools.usps.com/go/TrackConfirmAction_input',
+      },
+      {
+          name: 'Fedex',
+          tracking: 'https://www.fedex.com/apps/fedextrack/',
+      },
+      {
+          name: '中国邮政速递',
+          tracking: 'http://www.ems.com.cn/mailtracking/you_jian_cha_xun.html',
+      }
+  ].each {|s| Shop::ShippingMethod.create s}
+end
+
+if Shop::PaymentMethod.count == 0
+  [
+      {
+          name: 'Paypal',
+          flag: 'paypal',
+          description: 'https://www.paypal.com/',
+      },
+      {
+          name: '支付宝',
+          flag: 'alipay',
+          description: 'https://intl.alipay.com/',
+      },
+      {
+          name: '微信支付',
+          flag: 'wechat',
+          description: 'https://pay.weixin.qq.com/',
+      },
+  ].each {|s| Shop::PaymentMethod.create s}
+end

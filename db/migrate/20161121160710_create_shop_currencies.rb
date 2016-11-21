@@ -8,6 +8,7 @@ class CreateShopCurrencies < ActiveRecord::Migration[5.0]
       t.decimal :rate, precision: 12, scale: 4
       t.string :units, null: false, limit:8
       t.boolean :active, null: false, default: false
+
       t.timestamps
     end
   end

@@ -1,3 +1,5 @@
 Shop::Engine.routes.draw do
-  root to: 'home#index'
+  get 'dashboard' => 'home#dashboard'
+
+  root 'home#index'
 end

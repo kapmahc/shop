@@ -1,3 +1,3 @@
 module Shop
-  VERSION = '0.1.0'
+  VERSION = '2016.12.22'
 end

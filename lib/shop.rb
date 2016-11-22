@@ -1,5 +1,14 @@
-require "shop/engine"
+require 'shop/engine'
 
 module Shop
-  # Your code goes here...
+  def Shop.dashboard(user)
+    {
+        label: 'shop.home.dashboard.title',
+        links: [
+            {label: '111', href: 'root_path'},
+            {label: '222', href: 'root_path'},
+            {label: '333', href: 'root_path'},
+        ]
+    }
+  end
 end

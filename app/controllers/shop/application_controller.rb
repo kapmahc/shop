@@ -11,6 +11,12 @@ module Shop
     end
 
     protected
+
+    protected
+    def must_admin!
+      authorize :dashboard, :update?
+    end
+
     def set_locale
       I18n.locale = params[:locale] || browser.accept_language.first.full
     end

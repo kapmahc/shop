@@ -8,6 +8,9 @@ Shop::Engine.routes.draw do
       resources :products
       resources :orders
       resources :returns
+
+      resources :shipping_methods, except: [:show, :destroy]
+      resources :payment_methods, except: [:show, :destroy]
     end
 
     resources :orders

@@ -1,7 +1,7 @@
 require_dependency 'shop/application_controller'
 
 module Shop
-  class Admin::OrdersController < ApplicationController
+  class Admin::PaymentMethodsController < ApplicationController
     layout 'dashboard'
     before_action :must_admin!
 

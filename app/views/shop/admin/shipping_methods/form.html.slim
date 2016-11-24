@@ -1,0 +1,8 @@
+h2 #{@title}
+hr
+= simple_form_for @shipping_method do |f|
+  = f.input :name
+  = f.input :description, as: :text
+  = f.input :profile, as: :text
+  = f.input :active
+  = f.button :submit, t('buttons.submit')

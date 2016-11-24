@@ -12,6 +12,8 @@ module Shop
       links << {label: 'shop.admin.products.index.title', href: 'admin_products_path'}
       links << {label: 'shop.admin.orders.index.title', href: 'admin_orders_path'}
       links << {label: 'shop.admin.returns.index.title', href: 'admin_returns_path'}
+      links << {label: 'shop.admin.payment_methods.index.title', href: 'admin_payment_methods_path'}
+      links << {label: 'shop.admin.shipping_methods.index.title', href: 'admin_shipping_methods_path'}
       links << {label: 'shop.admin.profile.index.title', href: 'admin_profile_path'}
     end
 

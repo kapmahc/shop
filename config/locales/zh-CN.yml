@@ -1,4 +1,11 @@
 zh-CN:
+  activerecord:
+    attributes:
+      shop/shipping_method:
+        name: 名称
+        tracking: 货单跟踪
+        active: 激活
+        description: 说明
   shop:
     home:
       title: 在线购物
@@ -25,5 +32,17 @@ zh-CN:
       profile:
         index:
           title: 参数设置
+          countries: 国家/地区
+          currencies: 货币单位
+      payment_methods:
+        index:
+          title: 支付方式
+      shipping_methods:
+        index:
+          title: 快递方式
+        new:
+          title: 新建快递方式
+        edit:
+          title: 编辑快递方式[%{id}]
     dashboard:
       title: 在线商城

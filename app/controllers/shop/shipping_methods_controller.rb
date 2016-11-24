@@ -1,4 +1,4 @@
-require_dependency "shop/application_controller"
+require_dependency 'shop/application_controller'
 
 module Shop
   class ShippingMethodsController < ApplicationController
@@ -22,7 +22,7 @@ module Shop
 
     def edit
       @shipping_method = ShippingMethod.find params[:id]
-      @title = t '.title'
+      @title = t '.title', id:@shipping_method.id
       render 'form'
     end
 

@@ -1,6 +1,12 @@
 zh-CN:
   activerecord:
     attributes:
+      shop/payment_method:
+        name: 名称
+        flag: 类型
+        active: 激活
+        description: 说明
+        profile: 配置信息
       shop/shipping_method:
         name: 名称
         tracking: 货单跟踪

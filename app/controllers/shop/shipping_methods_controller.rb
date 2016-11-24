@@ -1,7 +1,7 @@
-require_dependency 'shop/application_controller'
+require_dependency "shop/application_controller"
 
 module Shop
-  class Admin::ShippingMethodsController < ApplicationController
+  class ShippingMethodsController < ApplicationController
     layout 'dashboard'
     before_action :must_admin!
 
@@ -14,7 +14,7 @@ module Shop
     def create
       @shipping_method = ShippingMethod.create shipping_method_params
       if @shipping_method.valid?
-        redirect_to admin_shipping_methods_path
+        redirect_to shipping_methods_path
       else
         render 'form'
       end
@@ -29,7 +29,7 @@ module Shop
     def update
       @shipping_method = ShippingMethod.find params[:id]
       if @shipping_method.update(shipping_method_params)
-        redirect_to admin_shipping_methods_path
+        redirect_to shipping_methods_path
       else
         render 'form'
       end

@@ -10,7 +10,7 @@ table class="table table-bordered table-hover"
       th
         = t 'buttons.manage'
         | &nbsp;
-        = link_to t('buttons.new'), new_admin_shipping_method_path
+        = link_to t('buttons.new'), new_shipping_method_path
   tbody
     - Shop::ShippingMethod.order(updated_at: :desc).each do |i|
       tr
@@ -20,4 +20,4 @@ table class="table table-bordered table-hover"
         td
           = link_to i.tracking, i.tracking, target: :_blank
         td
-          = link_to t('buttons.edit'), edit_admin_shipping_method_path(i), class: 'btn btn-warning'
+          = link_to t('buttons.edit'), edit_shipping_method_path(i), class: 'btn btn-warning'

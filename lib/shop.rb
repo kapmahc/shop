@@ -3,18 +3,19 @@ require 'shop/engine'
 module Shop
   def Shop.dashboard(user)
     links = [
-        {label: 'shop.addresses.index.title', href: 'addresses_path'},
-        {label: 'shop.orders.index.title', href: 'orders_path'},
-        {label: 'shop.returns.index.title', href: 'returns_path'},
+        # {label: 'shop.addresses.index.title', href: 'addresses_path'},
+        # {label: 'shop.orders.index.title', href: 'orders_path'},
+        # {label: 'shop.returns.index.title', href: 'returns_path'},
     ]
     if user.is_admin?
       links << nil
-      links << {label: 'shop.admin.products.index.title', href: 'admin_products_path'}
-      links << {label: 'shop.admin.orders.index.title', href: 'admin_orders_path'}
-      links << {label: 'shop.admin.returns.index.title', href: 'admin_returns_path'}
-      links << {label: 'shop.admin.payment_methods.index.title', href: 'admin_payment_methods_path'}
-      links << {label: 'shop.admin.shipping_methods.index.title', href: 'admin_shipping_methods_path'}
-      links << {label: 'shop.admin.profile.index.title', href: 'admin_profile_path'}
+      links << {label: 'shop.payment_methods.index.title', href: 'payment_methods_path'}
+      links << {label: 'shop.shipping_methods.index.title', href: 'shipping_methods_path'}
+
+      # links << {label: 'shop.products.index.title', href: 'admin_products_path'}
+      # links << {label: 'shop.orders.index.title', href: 'orders_path'}
+      # links << {label: 'shop.returns.index.title', href: 'returns_path'}
+      # links << {label: 'shop.profile.index.title', href: 'admin_profile_path'}
     end
 
     {

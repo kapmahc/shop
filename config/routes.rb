@@ -1,5 +1,13 @@
 Shop::Engine.routes.draw do
-  get 'dashboard' => 'home#dashboard'
 
-  root 'home#index'
+  scope '/:locale' do
+    resources :orders
+    resources :products do
+      get 'hot'
+      get 'latest'
+    end
+    resources :addresses
+  end
+
+  root 'products#hot'
 end

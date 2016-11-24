@@ -1,6 +1,13 @@
 zh-CN:
   activerecord:
     attributes:
+      shop/currency:
+        cid: 代号
+        code: 代码
+        name: 名称
+        country: 国家/地区
+        rate: 汇率
+        active: 激活
       shop/payment_method:
         name: 名称
         flag: 类型
@@ -45,15 +52,17 @@ zh-CN:
     addresses:
       index:
         title: 收件地址
-    admin:
-      orders:
-        index:
-          title: 订单处理
-      returns:
-        index:
-          title: 退货处理
-      products:
-        index:
-          title: 商品管理
+    countries:
+      index:
+        title: 国家/地区
+      edit:
+        title: 编辑国家/地区[%{id}]
+      new:
+        title: 添加国家/地区
+    currencies:
+      index:
+        title: 货币
+      edit:
+        title: 编辑货币[%{id}]
     dashboard:
       title: 在线商城

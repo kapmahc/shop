@@ -3,5 +3,27 @@ zh-CN:
     home:
       title: 在线购物
       description: 在线购物模块
+    orders:
+      index:
+        title: 我的订单
+    returns:
+      index:
+        title: 退货申请
+    addresses:
+      index:
+        title: 收件地址
+    admin:
+      orders:
+        index:
+          title: 订单处理
+      returns:
+        index:
+          title: 退货处理
+      products:
+        index:
+          title: 商品管理
+      profile:
+        index:
+          title: 参数设置
     dashboard:
       title: 在线商城

@@ -1,0 +1,6 @@
+h2 #{@title = t '.title'}
+hr
+= simple_form_for @state do |f|
+  = f.input :shop_country_id, as: :hidden
+  = f.input :name
+  = f.button :submit, t('buttons.submit')

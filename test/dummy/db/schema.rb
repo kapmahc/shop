@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20161121194407) do
     t.boolean  "active",     default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["name"], name: "index_shop_countries_on_name", unique: true
+    t.edit ["name"], name: "index_shop_countries_on_name", unique: true
   end
 
   create_table "shop_currencies", force: :cascade do |t|
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20161121194407) do
     t.boolean  "active",                                        default: false, null: false
     t.datetime "created_at",                                                    null: false
     t.datetime "updated_at",                                                    null: false
-    t.index ["cid"], name: "index_shop_currencies_on_cid"
+    t.edit ["cid"], name: "index_shop_currencies_on_cid"
     t.index ["code"], name: "index_shop_currencies_on_code"
     t.index ["country"], name: "index_shop_currencies_on_country"
     t.index ["name"], name: "index_shop_currencies_on_name"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161121194407) do
     t.boolean  "active",                         default: false, null: false
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
-    t.index ["flag"], name: "index_shop_payment_methods_on_flag"
+    t.edit ["flag"], name: "index_shop_payment_methods_on_flag"
     t.index ["name"], name: "index_shop_payment_methods_on_name", unique: true
   end
 
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20161121194407) do
     t.boolean  "active",               default: false, null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.index ["name"], name: "index_shop_shipping_methods_on_name", unique: true
+    t.edit ["name"], name: "index_shop_shipping_methods_on_name", unique: true
   end
 
   create_table "shop_states", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20161121194407) do
     t.integer  "shop_country_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["name", "shop_country_id"], name: "index_shop_states_on_name_and_shop_country_id", unique: true
+    t.edit ["name", "shop_country_id"], name: "index_shop_states_on_name_and_shop_country_id", unique: true
     t.index ["name"], name: "index_shop_states_on_name"
     t.index ["shop_country_id"], name: "index_shop_states_on_shop_country_id"
   end

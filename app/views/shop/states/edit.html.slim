@@ -1,0 +1,5 @@
+h2 #{@title = t '.title', id: @state.id}
+hr
+= simple_form_for @state do |f|
+  = f.input :name
+  = f.button :submit, t('buttons.submit')

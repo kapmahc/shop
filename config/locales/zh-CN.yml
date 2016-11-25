@@ -1,6 +1,13 @@
 zh-CN:
   activerecord:
     attributes:
+      shop/state:
+        country: 国家/地区
+        name: 名称
+      shop/country:
+        states: 省/州
+        name: 名称
+        active: 激活
       shop/currency:
         cid: 代号
         code: 代码
@@ -52,6 +59,11 @@ zh-CN:
     addresses:
       index:
         title: 收件地址
+    states:
+      new:
+        title: 新建省/州
+      edit:
+        title: 编辑省/州[%{id}]
     countries:
       index:
         title: 国家/地区

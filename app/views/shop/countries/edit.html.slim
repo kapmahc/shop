@@ -1,0 +1,16 @@
+div class="row block"
+  h2 #{@title = t '.title', id:@country.id}
+  hr
+  = simple_form_for @country do |f|
+    = f.input :name
+    = f.input :active
+    = f.button :submit, t('buttons.submit')
+
+div class="row block"
+  h2
+    = t 'activerecord.attributes.shop/country.states'
+    = link_to t('buttons.new'), new_state_path(country_id: @country.id), class: 'btn btn-link'
+  hr
+  div class="list-group"
+    - @country.states.order(name: :asc).each do |i|
+      = link_to i.name, edit_state_path(i), class: 'list-group-item list-group-item-action'

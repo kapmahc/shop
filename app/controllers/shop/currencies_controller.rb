@@ -1,4 +1,4 @@
-require_dependency "shop/application_controller"
+require_dependency 'shop/application_controller'
 
 module Shop
   class CurrenciesController < ApplicationController

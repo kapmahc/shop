@@ -14,11 +14,11 @@ class CreateShopShippingMethods < ActiveRecord::Migration[5.0]
     add_index :shop_shipping_methods, :name, unique: true
 
     create_table :shop_shipping_methods_countries, id: false do |t|
-      t.belongs_to :shop_shipping_method, foreign_key: true
-      t.belongs_to :shop_country, foreign_key: true
+      t.belongs_to :shop_shipping_method, foreign_key: true, index: {:name => 'idx_shop_shipping_methods_countries_s'}
+      t.belongs_to :shop_country, foreign_key: true, index: {:name => 'idx_shop_shipping_methods_countries_c'}
     end
-
-    add_index :shop_shipping_methods_countries, [:shop_shipping_method, :shop_country], unique:true, name: 'idx_shop_shipping_methods_countries'
+    
+    add_index :shop_shipping_methods_countries, [:shop_shipping_method, :shop_country], name: 'idx_shop_shipping_methods_countries', unique:true
 
   end
 end

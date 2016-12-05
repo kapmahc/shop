@@ -1,2 +1,22 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/shop/addresses/index.html.erb</p>
+h2 #{@title= t '.title'}
+hr
+table class="table table-bordered table-hover"
+  thead
+    tr
+      th #{t 'activerecord.attributes.shop/address.first_name'}
+      th #{t 'activerecord.attributes.shop/address.last_name'}
+      th #{t 'activerecord.attributes.shop/address.address1'}
+      th #{t 'activerecord.attributes.shop/address.address2'}
+      th #{t 'activerecord.attributes.shop/address.phone1'}
+      th #{t 'activerecord.attributes.shop/address.phone2'}
+      th
+        = t 'buttons.manage'
+        | &nbsp;
+        = link_to t('buttons.new'), new_country_path
+  tbody
+    - Shop::Country.order(updated_at: :desc).each do |i|
+      tr
+        th scope="row" #{i.name}
+        td #{i.active}
+        td
+          = link_to t('buttons.edit'), edit_country_path(i), class: 'btn btn-warning'

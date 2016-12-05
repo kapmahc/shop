@@ -3,7 +3,7 @@ require 'shop/engine'
 module Shop
   def Shop.dashboard(user)
     links = [
-        # {label: 'shop.addresses.index.title', href: 'addresses_path'},
+        {label: 'shop.addresses.index.title', href: 'addresses_path'},
         # {label: 'shop.orders.index.title', href: 'orders_path'},
         # {label: 'shop.returns.index.title', href: 'returns_path'},
     ]

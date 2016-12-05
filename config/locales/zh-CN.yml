@@ -1,6 +1,15 @@
 zh-CN:
   activerecord:
     attributes:
+      shop/address:
+        first_name: 名
+        last_name: 姓
+        address1: 地址（主要）
+        address2: 地址（备用）
+        phone1: 联系电话（主要）
+        phone2: 联系电话（备用）
+        zip_code: 邮政编码
+        state: 省份
       shop/state:
         country: 国家/地区
         name: 名称

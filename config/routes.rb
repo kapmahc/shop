@@ -6,6 +6,7 @@ Shop::Engine.routes.draw do
     resources :currencies, only: [:index, :edit, :update]
     resources :countries, except: [:show, :destroy]
     resources :states, except: [:index, :show, :destroy]
+    resources :addresses, except: [:show]
 
     get 'profile' => 'profile#index'
 
@@ -15,7 +16,6 @@ Shop::Engine.routes.draw do
       get 'hot'
       get 'latest'
     end
-    resources :addresses
     resources :returns
   end
 

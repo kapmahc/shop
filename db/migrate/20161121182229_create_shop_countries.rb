@@ -11,7 +11,6 @@ class CreateShopCountries < ActiveRecord::Migration[5.0]
       t.string :region_code, null: false, index: true, limit: 3
       t.string :sub_region_code, null: false, index: true, limit: 3
 
-      t.boolean :active, null: false, default: false
 
       t.timestamps
     end

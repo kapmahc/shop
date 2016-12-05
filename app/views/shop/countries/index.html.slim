@@ -4,15 +4,17 @@ table class="table table-bordered table-hover"
   thead
     tr
       th #{t 'activerecord.attributes.shop/country.name'}
-      th #{t 'activerecord.attributes.shop/country.active'}
+      th #{t 'activerecord.attributes.shop/country.alpha_2'}
+      th #{t 'activerecord.attributes.shop/country.code'}
       th
         = t 'buttons.manage'
         | &nbsp;
         = link_to t('buttons.new'), new_country_path
   tbody
-    - Shop::Country.order(updated_at: :desc).each do |i|
+    - Shop::Country.order(code: :asc).each do |i|
       tr
         th scope="row" #{i.name}
-        td #{i.active}
+        td #{i.alpha_2}
+        td #{i.code}
         td
           = link_to t('buttons.edit'), edit_country_path(i), class: 'btn btn-warning'

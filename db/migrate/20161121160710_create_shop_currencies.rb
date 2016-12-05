@@ -5,9 +5,7 @@ class CreateShopCurrencies < ActiveRecord::Migration[5.0]
       t.string :code, null: false, limit:3, edit: true
       t.string :name, null: false, edit: true
       t.string :country, null: false, edit: true
-      t.decimal :rate, precision: 12, scale: 4
       t.string :units, null: false, limit:8
-      t.boolean :active, null: false, default: false
 
       t.timestamps
     end

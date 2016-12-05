@@ -15,15 +15,15 @@ zh-CN:
         name: 名称
       shop/country:
         states: 省/州
+        alpha_2: 缩写
+        code: 代码
         name: 名称
-        active: 激活
       shop/currency:
         cid: 代号
         code: 代码
         name: 名称
         country: 国家/地区
         rate: 汇率
-        active: 激活
       shop/payment_method:
         name: 名称
         flag: 类型

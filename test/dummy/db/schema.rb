@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205231345) do
+ActiveRecord::Schema.define(version: 20161205233924) do
 
   create_table "shop_addresses", force: :cascade do |t|
     t.string   "full_name",                 null: false
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20161205231345) do
     t.datetime "updated_at",                                        null: false
     t.index ["shop_order_id"], name: "index_shop_chargebacks_on_shop_order_id"
     t.index ["state"], name: "index_shop_chargebacks_on_state"
+  end
+
+  create_table "shop_comments", force: :cascade do |t|
+    t.text     "body",            null: false
+    t.integer  "point",           null: false
+    t.integer  "shop_product_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["shop_product_id"], name: "index_shop_comments_on_shop_product_id"
+    t.index ["user_id"], name: "index_shop_comments_on_user_id"
   end
 
   create_table "shop_countries", force: :cascade do |t|
@@ -74,16 +85,16 @@ ActiveRecord::Schema.define(version: 20161205231345) do
   end
 
   create_table "shop_inventory_units", force: :cascade do |t|
-    t.integer  "lock_version",                       null: false
-    t.string   "state",                   limit: 16, null: false
+    t.integer  "lock_version",                            null: false
+    t.string   "state",                        limit: 16, null: false
     t.integer  "shop_order_id"
     t.integer  "shop_variant_id"
     t.integer  "shop_shipment_id"
-    t.integer  "return_authorization_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.index ["return_authorization_id"], name: "index_shop_inventory_units_on_return_authorization_id"
+    t.integer  "shop_return_authorization_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["shop_order_id"], name: "index_shop_inventory_units_on_shop_order_id"
+    t.index ["shop_return_authorization_id"], name: "index_shop_inventory_units_on_shop_return_authorization_id"
     t.index ["shop_shipment_id"], name: "index_shop_inventory_units_on_shop_shipment_id"
     t.index ["shop_variant_id"], name: "index_shop_inventory_units_on_shop_variant_id"
     t.index ["state"], name: "index_shop_inventory_units_on_state"
@@ -156,6 +167,14 @@ ActiveRecord::Schema.define(version: 20161205231345) do
     t.index ["name"], name: "index_shop_products_on_name"
   end
 
+  create_table "shop_products_tags", id: false, force: :cascade do |t|
+    t.integer "shop_products_id"
+    t.integer "shop_tags_id"
+    t.index ["shop_products_id", "shop_tags_id"], name: "idx_shop_products_tags", unique: true
+    t.index ["shop_products_id"], name: "index_shop_products_tags_on_shop_products_id"
+    t.index ["shop_tags_id"], name: "index_shop_products_tags_on_shop_tags_id"
+  end
+
   create_table "shop_return_authorizations", force: :cascade do |t|
     t.string   "tracking",                                                    null: false
     t.string   "uid",                                                         null: false
@@ -203,8 +222,8 @@ ActiveRecord::Schema.define(version: 20161205231345) do
     t.integer "shop_shipping_method_id"
     t.integer "shop_country_id"
     t.index ["shop_country_id"], name: "idx_shop_shipping_methods_countries_c"
+    t.index ["shop_shipping_method_id", "shop_country_id"], name: "idx_shop_shipping_methods_countries", unique: true
     t.index ["shop_shipping_method_id"], name: "idx_shop_shipping_methods_countries_s"
-    t.index [nil, nil], name: "idx_shop_shipping_methods_countries", unique: true
   end
 
   create_table "shop_states", force: :cascade do |t|
@@ -214,6 +233,13 @@ ActiveRecord::Schema.define(version: 20161205231345) do
     t.datetime "updated_at",      null: false
     t.index ["name", "shop_country_id"], name: "index_shop_states_on_name_and_shop_country_id", unique: true
     t.index ["shop_country_id"], name: "index_shop_states_on_shop_country_id"
+  end
+
+  create_table "shop_tags", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_shop_tags_on_name", unique: true
   end
 
   create_table "shop_variants", force: :cascade do |t|

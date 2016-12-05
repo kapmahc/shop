@@ -17,8 +17,8 @@ class CreateShopShippingMethods < ActiveRecord::Migration[5.0]
       t.belongs_to :shop_shipping_method, foreign_key: true, index: {:name => 'idx_shop_shipping_methods_countries_s'}
       t.belongs_to :shop_country, foreign_key: true, index: {:name => 'idx_shop_shipping_methods_countries_c'}
     end
-    
-    add_index :shop_shipping_methods_countries, [:shop_shipping_method, :shop_country], name: 'idx_shop_shipping_methods_countries', unique:true
+
+    add_index :shop_shipping_methods_countries, [:shop_shipping_method_id, :shop_country_id], name: 'idx_shop_shipping_methods_countries', unique:true
 
   end
 end

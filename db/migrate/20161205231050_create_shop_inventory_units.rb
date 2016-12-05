@@ -9,7 +9,7 @@ class CreateShopInventoryUnits < ActiveRecord::Migration[5.0]
       t.belongs_to :shop_order, foreign_key: true
       t.belongs_to :shop_variant, foreign_key: true
       t.belongs_to :shop_shipment, foreign_key: true
-      t.belongs_to :return_authorization, foreign_key: true
+      t.belongs_to :shop_return_authorization, foreign_key: true
 
       t.timestamps
     end

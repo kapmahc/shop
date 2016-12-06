@@ -1,8 +1,0 @@
-h2 #{@title = t '.title', id:@currency.id}
-hr
-= simple_form_for @currency do |f|
-  = f.input :name, readonly: true
-  = f.input :code, readonly: true
-  = f.input :cid, readonly: true
-  = f.input :active
-  = f.button :submit, t('buttons.submit')

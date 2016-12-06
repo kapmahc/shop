@@ -3,20 +3,13 @@ hr
 table class="table table-bordered table-hover"
   thead
     tr
-      th #{t 'activerecord.attributes.shop/currency.country'}
-      th #{t 'activerecord.attributes.shop/currency.name'}
-      th #{t 'activerecord.attributes.shop/currency.cid'}
-      th #{t 'activerecord.attributes.shop/currency.code'}
-      th #{t 'activerecord.attributes.shop/currency.active'}
-      th
-        = t 'buttons.manage'
+      th #{t 'activerecord.attributes.money/currency.name'}
+      th #{t 'activerecord.attributes.money/currency.iso_numeric'}
+      th #{t 'activerecord.attributes.money/currency.iso_code'}
+
   tbody
-    - Shop::Currency.order(updated_at: :desc).each do |i|
+    - Money::Currency.all.each do |i|
       tr
-        th scope="row" #{i.country}
-        td #{i.name}
-        td #{i.cid}
-        td #{i.code}
-        td #{i.active}
-        td
-          = link_to t('buttons.edit'), edit_currency_path(i), class: 'btn btn-warning'
+        th scope="row" #{i.name}
+        td #{i.iso_numeric}
+        td #{i.iso_code}

@@ -1,12 +1,12 @@
 Shop::Engine.routes.draw do
 
-    scope '/:locale' do
+  scope '/:locale' do
     resources :shipping_methods, except: [:show, :destroy]
     resources :payment_methods, except: [:show, :destroy]
-    resources :currencies, only: [:index, :edit, :update]
-    resources :countries, except: [:show, :destroy]
-    resources :states, except: [:index, :show, :destroy]
     resources :addresses, except: [:show]
+
+    resources :currencies, only: [:index]
+    resources :countries, only: [:index]
 
     get 'profile' => 'profile#index'
 

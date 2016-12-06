@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'paypal-sdk-rest'
   s.add_dependency 'country_select'
   s.add_dependency 'money'
+  s.add_dependency 'closure_tree'
 
   s.add_development_dependency 'sqlite3'
 end

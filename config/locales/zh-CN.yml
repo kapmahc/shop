@@ -1,6 +1,15 @@
 zh-CN:
   activerecord:
     attributes:
+      money/currency:
+        name: 名称
+        iso_numeric: ISO编号
+        iso_code: ISO编码
+      iso3166/country:
+        name: 名称
+        country_code: 编号
+        alpha2: 代码(2)
+        alpha3: 代码(3)
       shop/address:
         first_name: 名
         last_name: 姓
@@ -10,20 +19,6 @@ zh-CN:
         phone2: 联系电话（备用）
         zip_code: 邮政编码
         state: 省份
-      shop/state:
-        country: 国家/地区
-        name: 名称
-      shop/country:
-        states: 省/州
-        alpha_2: 缩写
-        code: 代码
-        name: 名称
-      shop/currency:
-        cid: 代号
-        code: 代码
-        name: 名称
-        country: 国家/地区
-        rate: 汇率
       shop/payment_method:
         name: 名称
         flag: 类型
@@ -82,7 +77,7 @@ zh-CN:
         title: 添加国家/地区
     currencies:
       index:
-        title: 货币
+        title: 货币列表
       edit:
         title: 编辑货币[%{id}]
     dashboard:

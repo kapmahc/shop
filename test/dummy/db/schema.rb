@@ -51,39 +51,6 @@ ActiveRecord::Schema.define(version: 20161205233924) do
     t.index ["user_id"], name: "index_shop_comments_on_user_id"
   end
 
-  create_table "shop_countries", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.string   "alpha_2",         limit: 2,  null: false
-    t.string   "alpha_3",         limit: 3,  null: false
-    t.string   "code",            limit: 3,  null: false
-    t.string   "iso3166_2",       limit: 16, null: false
-    t.string   "region",          limit: 16, null: false
-    t.string   "sub_region",      limit: 32, null: false
-    t.string   "region_code",     limit: 3,  null: false
-    t.string   "sub_region_code", limit: 3,  null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.index ["alpha_2"], name: "index_shop_countries_on_alpha_2"
-    t.index ["alpha_3"], name: "index_shop_countries_on_alpha_3"
-    t.index ["code"], name: "index_shop_countries_on_code"
-    t.index ["iso3166_2"], name: "index_shop_countries_on_iso3166_2"
-    t.index ["name"], name: "index_shop_countries_on_name", unique: true
-    t.index ["region"], name: "index_shop_countries_on_region"
-    t.index ["region_code"], name: "index_shop_countries_on_region_code"
-    t.index ["sub_region"], name: "index_shop_countries_on_sub_region"
-    t.index ["sub_region_code"], name: "index_shop_countries_on_sub_region_code"
-  end
-
-  create_table "shop_currencies", force: :cascade do |t|
-    t.string   "cid",        limit: 3, null: false
-    t.string   "code",       limit: 3, null: false
-    t.string   "name",                 null: false
-    t.string   "country",              null: false
-    t.string   "units",      limit: 8, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
   create_table "shop_inventory_units", force: :cascade do |t|
     t.integer  "lock_version",                            null: false
     t.string   "state",                        limit: 16, null: false
@@ -224,15 +191,6 @@ ActiveRecord::Schema.define(version: 20161205233924) do
     t.index ["shop_country_id"], name: "idx_shop_shipping_methods_countries_c"
     t.index ["shop_shipping_method_id", "shop_country_id"], name: "idx_shop_shipping_methods_countries", unique: true
     t.index ["shop_shipping_method_id"], name: "idx_shop_shipping_methods_countries_s"
-  end
-
-  create_table "shop_states", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.integer  "shop_country_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["name", "shop_country_id"], name: "index_shop_states_on_name_and_shop_country_id", unique: true
-    t.index ["shop_country_id"], name: "index_shop_states_on_shop_country_id"
   end
 
   create_table "shop_tags", force: :cascade do |t|

@@ -3,20 +3,21 @@ hr
 table class="table table-bordered table-hover"
   thead
     tr
-      th #{t 'activerecord.attributes.shop/address.first_name'}
-      th #{t 'activerecord.attributes.shop/address.last_name'}
-      th #{t 'activerecord.attributes.shop/address.address1'}
-      th #{t 'activerecord.attributes.shop/address.address2'}
-      th #{t 'activerecord.attributes.shop/address.phone1'}
-      th #{t 'activerecord.attributes.shop/address.phone2'}
+      th #{t 'activerecord.attributes.shop/address.full_name'}
+      th #{t 'activerecord.attributes.shop/address.content'}
+      th #{t 'activerecord.attributes.shop/address.zip_code'}
+      th #{t 'activerecord.attributes.shop/address.country_code'}
       th
         = t 'buttons.manage'
         | &nbsp;
-        = link_to t('buttons.new'), new_country_path
+        = link_to t('buttons.new'), new_address_path
   tbody
-    - Shop::Country.order(updated_at: :desc).each do |i|
+    - @addresses.each do |i|
       tr
-        th scope="row" #{i.name}
-        td #{i.active}
+        th scope="row" #{i.full_name}
+        td #{i.content}
+        td #{i.zip_code}
+        td #{i.country_name}
         td
-          = link_to t('buttons.edit'), edit_country_path(i), class: 'btn btn-warning'
+          = link_to t('buttons.edit'), edit_address_path(i), class: 'btn btn-warning'
+          = render 'shared/btn-remove', url:address_path(i)

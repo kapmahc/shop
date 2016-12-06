@@ -1,0 +1,9 @@
+h2 #{@title}
+hr
+= simple_form_for @address do |f|
+  = f.input :full_name
+  = f.input :zip_code
+  = f.input :country_code, priority: %w(US CN TW)
+  = f.input :content
+  = f.input :phone
+  = f.button :submit, t('buttons.submit')

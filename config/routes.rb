@@ -7,9 +7,9 @@ Shop::Engine.routes.draw do
     resources :shipping_methods, except: [:show, :destroy]
     resources :payment_methods, except: [:show, :destroy]
     resources :tags, except: [:show]
-
     resources :addresses, except: [:show]
 
+    resources :products
 
     get 'profile' => 'profile#index'
 

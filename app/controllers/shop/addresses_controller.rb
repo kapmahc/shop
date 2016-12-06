@@ -1,10 +1,13 @@
 require_dependency 'shop/application_controller'
+require 'country_select'
 
 module Shop
   class AddressesController < ApplicationController
+    layout 'dashboard'
+
     def index
       authorize Address.new
-      @addresses = Address.where(user_id: :current_user.id).order(updated_at: :desc)
+      @addresses = Address.where(user_id: current_user.id).order(updated_at: :desc)
     end
 
     def new
@@ -18,9 +21,12 @@ module Shop
       @address = Address.new address_params
       authorize @address
       @address.user = current_user
+
+      puts '#'*80, @address.inspect
       if @address.save
         redirect_to addresses_path
       else
+        @title = t 'shop.addresses.new.title'
         render 'form'
       end
     end
@@ -39,6 +45,7 @@ module Shop
       if @address.update(address_params)
         redirect_to addresses_path
       else
+        @title = t 'shop.addresses.edit.title', id:@address.id
         render 'form'
       end
     end
@@ -54,11 +61,11 @@ module Shop
     protected
     def address_params
       params.require(:address).permit(
-          :first_name, :last_name,
-          :address1, :address2,
-          :phone1, :phone2,
+          :full_name,
+          :content,
+          :phone,
           :zip_code,
-          :shop_state_id,
+          :country_code
       )
     end
   end

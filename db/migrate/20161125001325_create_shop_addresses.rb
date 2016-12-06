@@ -5,7 +5,7 @@ class CreateShopAddresses < ActiveRecord::Migration[5.0]
       t.string :content, null: false, index: true
       t.string :phone, null:false, index:true
       t.string :zip_code, null:false, limit: 8, index: true
-      t.string :country, null:false, index:true
+      t.string :country_code, null:false, index:true, limit:3
 
       t.belongs_to :user, foreign_key: true
 

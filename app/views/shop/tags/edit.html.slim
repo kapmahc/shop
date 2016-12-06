@@ -3,4 +3,5 @@ h2
 hr
 = simple_form_for @tag do |f|
   = f.input :name
+  = f.input :sort_order, collection: -10..10
   = f.button :submit, t('buttons.submit')

@@ -1,0 +1,15 @@
+li
+  - id = "btn-g-#{tag.id}"
+  div class="btn-group btn-group-sm" role="group"
+    button id="#{id}" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" #{tag.name}
+
+
+    div class="dropdown-menu" aria-labelledby="#{id}"
+      = link_to t('buttons.new'), new_tag_path(parent_id: tag.id), class: 'dropdown-item'
+      = link_to t('buttons.edit'), edit_tag_path(tag.id), class: 'dropdown-item'
+      = link_to t('buttons.remove'), tag_path(tag.id), class: 'dropdown-item', method: :delete, data: { confirm: t('messages.are_you_sure')}
+
+- unless tag.leaf?
+  ol
+    - tag.children.each do |i|
+      = render 'shop/shared/tag_edit', tag: i

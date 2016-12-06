@@ -31,6 +31,9 @@ zh-CN:
         active: 激活
         description: 说明
         profile: 配置信息
+      shop/tag:
+        name: 名称
+        sort_order: 排序
   shop:
     home:
       title: 在线购物
@@ -71,14 +74,15 @@ zh-CN:
     countries:
       index:
         title: 国家/地区
-      edit:
-        title: 编辑国家/地区[%{id}]
-      new:
-        title: 添加国家/地区
     currencies:
       index:
-        title: 货币列表
+        title: 货币
+    tags:
+      index:
+        title: 分类
+      new:
+        title: 新建分类
       edit:
-        title: 编辑货币[%{id}]
+        title: 编辑分类[%{id}]
     dashboard:
       title: 在线商城

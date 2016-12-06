@@ -1,12 +1,11 @@
 class CreateShopTags < ActiveRecord::Migration[5.0]
   def change
     create_table :shop_tags do |t|
-      t.string :name, null:false
+      t.string :name, null:false, index:true
+      t.integer :parent_id
+      t.integer :sort_order, null:false
       t.timestamps
     end
-
-    add_index :shop_tags, :name, unique:true
-
 
     create_table :shop_products_tags, id: false do |t|
       t.belongs_to :shop_products, foreign_key: true

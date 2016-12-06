@@ -1,0 +1,7 @@
+h2
+  = @title = t '.title'
+  = link_to t('buttons.new'), new_tag_path, class:'btn btn-link'
+hr
+ol
+  - Shop::Tag.roots.each do |i|
+    = render 'shop/shared/tag_edit', tag: i

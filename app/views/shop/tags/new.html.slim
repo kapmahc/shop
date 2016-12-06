@@ -1,0 +1,8 @@
+h2
+  = @title = t '.title'
+hr
+= simple_form_for @tag do |f|
+  = f.input :parent_id, as: :hidden
+  = f.input :name
+  = f.input :sort_order, collection: 1..20
+  = f.button :submit, t('buttons.submit')

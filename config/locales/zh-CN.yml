@@ -31,6 +31,12 @@ zh-CN:
       shop/tag:
         name: 名称
         sort_order: 排序
+      shop/product:
+        name: 名称
+        description: 详细信息
+        attachments: 附件
+        tags: 分类
+        comments: 相关评论
   shop:
     home:
       title: 在线购物
@@ -85,5 +91,12 @@ zh-CN:
         title: 新建分类
       edit:
         title: 编辑分类[%{id}]
+    products:
+      index:
+        title: 产品列表
+      new:
+        title: 添加产品
+      edit:
+        title: 修改产品[%{id}]
     dashboard:
       title: 在线商城

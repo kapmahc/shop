@@ -2,11 +2,10 @@ require_dependency 'shop/application_controller'
 
 module Shop
   class TagsController < ApplicationController
-    layout 'dashboard'
-
     def new
       @tag = Tag.new params.permit(:parent_id).merge(sort_order:0)
       authorize @tag
+      render layout:'dashboard'
     end
 
     def create
@@ -15,13 +14,14 @@ module Shop
       if @tag.save
         redirect_to tags_path
       else
-        render 'new'
+        render 'new', layout:'dashboard'
       end
     end
 
     def edit
       @tag = Tag.find params[:id]
       authorize @tag
+      render layout:'dashboard'
     end
 
     def update
@@ -30,12 +30,13 @@ module Shop
       if @tag.update params.require(:tag).permit(:name, :sort_order)
         redirect_to tags_path
       else
-        render 'new'
+        render 'new', layout:'dashboard'
       end
     end
 
     def index
       authorize Tag.new
+      render layout:'dashboard'
     end
 
     def destroy

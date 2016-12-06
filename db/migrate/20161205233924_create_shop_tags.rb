@@ -8,11 +8,11 @@ class CreateShopTags < ActiveRecord::Migration[5.0]
     end
 
     create_table :shop_products_tags, id: false do |t|
-      t.belongs_to :shop_products, foreign_key: true
-      t.belongs_to :shop_tags, foreign_key: true
+      t.belongs_to :shop_product, foreign_key: true
+      t.belongs_to :shop_tag, foreign_key: true
     end
 
-    add_index :shop_products_tags, [:shop_products_id, :shop_tags_id], name: 'idx_shop_products_tags', unique:true
+    add_index :shop_products_tags, [:shop_product_id, :shop_tag_id], name: 'idx_shop_products_tags', unique:true
 
   end
 end

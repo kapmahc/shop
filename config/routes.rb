@@ -7,17 +7,26 @@ Shop::Engine.routes.draw do
     resources :payment_methods, except: [:show, :destroy]
     resources :addresses, except: [:show]
     resources :tags
-    resources :products
+    resources :products do
+      collection do
+        get 'hot'
+        get 'latest'
+      end
+
+      member do
+        %w(hot latest).each do |act|
+          get act
+          post act
+        end
+      end
+    end
+
 
     get 'profile' => 'profile#index'
 
 
     resources :orders
-    resources :products do
-      get 'hot'
-      get 'latest'
-    end
-    resources :returns
+
   end
 
   root 'products#hot'

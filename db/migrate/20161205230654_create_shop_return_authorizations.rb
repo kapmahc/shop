@@ -7,7 +7,7 @@ class CreateShopReturnAuthorizations < ActiveRecord::Migration[5.0]
       # :authorized :canceled
       t.string :state, null:false, limit:16
 
-      t.money :amount
+      t.monetize :amount
       t.text :reason, null:false
 
       t.integer :enter_by

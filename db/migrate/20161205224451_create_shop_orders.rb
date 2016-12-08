@@ -14,10 +14,10 @@ class CreateShopOrders < ActiveRecord::Migration[5.0]
 
       t.string :address, null:false
 
-      t.money :item_total
-      t.money :total
-      t.money :adjustment_total
-      t.money :payment_total
+      t.monetize :item_total
+      t.monetize :total
+      t.monetize :adjustment_total
+      t.monetize :payment_total
 
       t.belongs_to :user, foreign_key: true
 

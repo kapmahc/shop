@@ -7,7 +7,7 @@ class CreateShopShipments < ActiveRecord::Migration[5.0]
       # :ready, :pending, :assemble, :cancelled, :shipped
       t.string :state, null:false, limit:16
 
-      t.money :cost
+      t.monetize :cost
 
       t.datetime :shipped_at
 

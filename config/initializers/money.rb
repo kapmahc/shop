@@ -1,5 +1,8 @@
 # encoding : utf-8
+
 require 'money-rails'
+
+MoneyRails::Hooks.init
 
 MoneyRails.configure do |config|
 

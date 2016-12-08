@@ -64,9 +64,6 @@ zh-CN:
         title: 新建快递方式
       edit:
         title: 编辑快递方式[%{id}]
-    returns:
-      index:
-        title: 退货申请
     addresses:
       index:
         title: 收件地址

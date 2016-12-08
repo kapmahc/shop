@@ -38,9 +38,12 @@ zh-CN:
         tags: 分类
         comments: 相关评论
         upload: 上传附件
+        variants: 型号列表
       shop/property:
-        key: 键
         value: 值
+      shop/property_field:
+        name: 名称
+        sort_order: 序号
       shop/variant:
         sku: 编号
         name: 名称
@@ -100,17 +103,24 @@ zh-CN:
         title: 编辑分类[%{id}]
     products:
       index:
-        title: 产品列表
-      new:
-        title: 添加产品
-      edit:
-        title: 修改产品[%{id}]
-    variants:
-      index:
-        title: 商品管理
+        title: 商品列表
       new:
         title: 添加商品
       edit:
         title: 修改商品[%{id}]
+    variants:
+      index:
+        title: 型号管理
+      new:
+        title: 添加型号
+      edit:
+        title: 修改型号[%{id}]
+    property_fields:
+      index:
+        title: 属性管理
+      new:
+        title: 添加属性
+      edit:
+        title: 修改属性[%{id}]
     dashboard:
       title: 在线商城

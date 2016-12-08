@@ -7,6 +7,7 @@ table class="table table-hover table-bordered"
       th #{t 'activerecord.attributes.shop/variant.name'}
       th #{t 'activerecord.attributes.shop/variant.price'}
       th #{t 'activerecord.attributes.shop/variant.cost_price'}
+      th #{t 'activerecord.attributes.shop/variant.properties'}
       th
         = t 'buttons.manage'
         | &nbsp;
@@ -15,9 +16,13 @@ table class="table table-hover table-bordered"
     -@variants.each do |i|
       tr
         th scope="row" #{i.sku}
-        th scope="row" #{i.name}
+        td #{i.name}
         td #{i.price}
         td #{i.cost_price}
+        td
+          ul
+            -i.properties.each do |j|
+              li #{j.field.key}: #{j.value}
         td
           div class="btn-group btn-group-sm"
             = link_to t('buttons.view'), product_path(i.product), class:'btn btn-info', target: :_blank

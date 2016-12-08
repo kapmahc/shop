@@ -38,6 +38,15 @@ zh-CN:
         tags: 分类
         comments: 相关评论
         upload: 上传附件
+      shop/property:
+        key: 键
+        value: 值
+      shop/variant:
+        sku: 编号
+        name: 名称
+        properties: 属性列表
+        price: 售价
+        cost_price: 成本价
   shop:
     home:
       title: 在线购物
@@ -96,5 +105,12 @@ zh-CN:
         title: 添加产品
       edit:
         title: 修改产品[%{id}]
+    variants:
+      index:
+        title: 商品管理
+      new:
+        title: 添加商品
+      edit:
+        title: 修改商品[%{id}]
     dashboard:
       title: 在线商城

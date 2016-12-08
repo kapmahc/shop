@@ -3,7 +3,7 @@ require 'money-rails'
 class CreateShopVariants < ActiveRecord::Migration[5.0]
   def change
     create_table :shop_variants do |t|
-
+      t.string :name, null:false, index:true
       t.string :sku, null:false, limit: 36
       t.monetize :price
       t.monetize :cost_price

@@ -1,0 +1,26 @@
+h2 #{@title= t '.title'}
+hr
+table class="table table-hover table-bordered"
+  thead
+    tr
+      th #{t 'activerecord.attributes.shop/variant.sku'}
+      th #{t 'activerecord.attributes.shop/variant.name'}
+      th #{t 'activerecord.attributes.shop/variant.price'}
+      th #{t 'activerecord.attributes.shop/variant.cost_price'}
+      th
+        = t 'buttons.manage'
+        | &nbsp;
+        = link_to t('buttons.new'), new_variant_path(params.permit(:shop_product_id))
+  tbody
+    -@variants.each do |i|
+      tr
+        th scope="row" #{i.sku}
+        th scope="row" #{i.name}
+        td #{i.price}
+        td #{i.cost_price}
+        td
+          div class="btn-group btn-group-sm"
+            = link_to t('buttons.view'), product_path(i.product), class:'btn btn-info', target: :_blank
+            = link_to t('buttons.edit'), edit_variant_path(i), class:'btn btn-warning'
+            = link_to t('buttons.edit'), edit_variant_path(i), class:'btn btn-secondary'
+            = render 'shared/btn-remove', url:variant_path(i)

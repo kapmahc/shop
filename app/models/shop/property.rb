@@ -1,6 +1,6 @@
 module Shop
   class Property < ApplicationRecord
-    validates :key, :value, presence: true
-    validates :key, uniqueness: { scope: :shop_variant_id}
+
+    belongs_to :variant, class_name: 'Shop::Variant', foreign_key: 'shop_variant_id'
   end
 end

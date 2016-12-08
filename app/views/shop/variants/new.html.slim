@@ -1,0 +1,11 @@
+h2 #{@title = t '.title'}
+hr
+
+= simple_form_for @variant do |f|
+  = f.input :shop_product_id, as: :hidden
+  = f.input :sku
+  = f.input :name
+  = f.input :price
+  = f.input :cost_price
+
+  = f.button :submit, t('buttons.submit')

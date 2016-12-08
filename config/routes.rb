@@ -1,7 +1,5 @@
 Shop::Engine.routes.draw do
 
-
-
   scope '/:locale' do
     resources :currencies, only: [:index]
     resources :countries, only: [:index]
@@ -23,7 +21,9 @@ Shop::Engine.routes.draw do
       end
     end
 
-    get :variants
+    resources :variants, except: [:show]
+    resources :properties, except: [:show]
+    resources :property_fields, except: [:show]
 
 
     get 'profile' => 'profile#index'

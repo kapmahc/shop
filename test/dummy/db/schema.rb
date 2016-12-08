@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208190134) do
+ActiveRecord::Schema.define(version: 20161208200942) do
 
   create_table "shop_addresses", force: :cascade do |t|
     t.string   "full_name",              null: false
@@ -149,14 +149,28 @@ ActiveRecord::Schema.define(version: 20161208190134) do
   end
 
   create_table "shop_properties", force: :cascade do |t|
-    t.string   "key",             null: false
-    t.text     "value",           null: false
+    t.text     "value",                  null: false
     t.integer  "shop_variant_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["key", "shop_variant_id"], name: "index_shop_properties_on_key_and_shop_variant_id", unique: true
-    t.index ["key"], name: "index_shop_properties_on_key"
+    t.integer  "shop_property_field_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["shop_property_field_id"], name: "index_shop_properties_on_shop_property_field_id"
+    t.index ["shop_variant_id", "shop_property_field_id"], name: "idx_shop_properties", unique: true
     t.index ["shop_variant_id"], name: "index_shop_properties_on_shop_variant_id"
+  end
+
+  create_table "shop_property_fields", force: :cascade do |t|
+    t.string   "key",                         null: false
+    t.string   "locale",                      null: false
+    t.string   "flag",       default: "text", null: false
+    t.integer  "sort_order",                  null: false
+    t.text     "profile"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["flag"], name: "index_shop_property_fields_on_flag"
+    t.index ["key"], name: "index_shop_property_fields_on_key"
+    t.index ["locale", "key"], name: "index_shop_property_fields_on_locale_and_key", unique: true
+    t.index ["locale"], name: "index_shop_property_fields_on_locale"
   end
 
   create_table "shop_return_authorizations", force: :cascade do |t|
@@ -222,16 +236,20 @@ ActiveRecord::Schema.define(version: 20161208190134) do
   end
 
   create_table "shop_variants", force: :cascade do |t|
-    t.string   "sku",             limit: 36,                                          null: false
-    t.decimal  "weight",                     precision: 12, scale: 2
-    t.decimal  "height",                     precision: 12, scale: 2
-    t.decimal  "width",                      precision: 12, scale: 2
-    t.decimal  "length",                     precision: 12, scale: 2
+    t.string   "name",                                                                    null: false
+    t.string   "sku",                 limit: 36,                                          null: false
+    t.integer  "price_cents",                                             default: 0,     null: false
+    t.string   "price_currency",                                          default: "USD", null: false
+    t.integer  "cost_price_cents",                                        default: 0,     null: false
+    t.string   "cost_price_currency",                                     default: "USD", null: false
+    t.decimal  "weight",                         precision: 12, scale: 2
+    t.decimal  "height",                         precision: 12, scale: 2
+    t.decimal  "width",                          precision: 12, scale: 2
+    t.decimal  "length",                         precision: 12, scale: 2
     t.integer  "shop_product_id"
-    t.datetime "created_at",                                                          null: false
-    t.datetime "updated_at",                                                          null: false
-    t.integer  "price_cents",                                         default: 0,     null: false
-    t.string   "price_currency",                                      default: "USD", null: false
+    t.datetime "created_at",                                                              null: false
+    t.datetime "updated_at",                                                              null: false
+    t.index ["name"], name: "index_shop_variants_on_name"
     t.index ["shop_product_id"], name: "index_shop_variants_on_shop_product_id"
     t.index ["sku"], name: "index_shop_variants_on_sku", unique: true
   end

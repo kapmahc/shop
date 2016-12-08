@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206155101) do
+ActiveRecord::Schema.define(version: 20161208190134) do
 
   create_table "shop_addresses", force: :cascade do |t|
     t.string   "full_name",              null: false
@@ -146,6 +146,17 @@ ActiveRecord::Schema.define(version: 20161206155101) do
     t.index ["shop_product_id", "shop_tag_id"], name: "idx_shop_products_tags", unique: true
     t.index ["shop_product_id"], name: "index_shop_products_tags_on_shop_product_id"
     t.index ["shop_tag_id"], name: "index_shop_products_tags_on_shop_tag_id"
+  end
+
+  create_table "shop_properties", force: :cascade do |t|
+    t.string   "key",             null: false
+    t.text     "value",           null: false
+    t.integer  "shop_variant_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["key", "shop_variant_id"], name: "index_shop_properties_on_key_and_shop_variant_id", unique: true
+    t.index ["key"], name: "index_shop_properties_on_key"
+    t.index ["shop_variant_id"], name: "index_shop_properties_on_shop_variant_id"
   end
 
   create_table "shop_return_authorizations", force: :cascade do |t|

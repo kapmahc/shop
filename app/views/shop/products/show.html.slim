@@ -1,0 +1,9 @@
+h2 #{@title = @product.name}
+hr
+div class="row"
+  div class="col-md-4"
+    = render 'shared/carousel', id: "product-#{@product.id}", pictures: @product.pictures
+  div class="col-md-8"
+    p class="markdown" #{@product.description}
+
+

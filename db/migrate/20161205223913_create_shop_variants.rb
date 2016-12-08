@@ -5,13 +5,12 @@ class CreateShopVariants < ActiveRecord::Migration[5.0]
     create_table :shop_variants do |t|
 
       t.string :sku, null:false, limit: 36
-      # t.monetize :price
-      # t.monetize :cost_price
+      t.monetize :price
+      t.monetize :cost_price
       t.decimal :weight, precision: 12, scale: 2
       t.decimal :height, precision: 12, scale: 2
       t.decimal :width, precision: 12, scale: 2
       t.decimal :length, precision: 12, scale: 2
-
 
       t.belongs_to :shop_product, foreign_key: true
 
@@ -19,6 +18,5 @@ class CreateShopVariants < ActiveRecord::Migration[5.0]
     end
     add_index :shop_variants, :sku, unique: true
 
-    add_monetize :shop_variants, :price
   end
 end

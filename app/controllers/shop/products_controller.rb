@@ -3,6 +3,10 @@ require_dependency 'shop/application_controller'
 module Shop
   class ProductsController < ApplicationController
 
+    def show
+      @product = Product.find params[:id]
+    end
+
     def new
       @product = Product.new
       authorize @product

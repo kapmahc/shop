@@ -37,6 +37,7 @@ zh-CN:
         attachments: 附件
         tags: 分类
         comments: 相关评论
+        upload: 上传附件
   shop:
     home:
       title: 在线购物

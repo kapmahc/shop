@@ -1,6 +1,6 @@
 - items.each do |i|
-  br
-  = raw '&nbsp;' * depth * 2
-  = link_to i.name, tag_path(i)
-  - unless i.leaf?
-    = render 'shop/shared/tags-bar', items: i.children, depth:depth+1
+  div 
+    = raw '&nbsp;' * depth * 2
+    = link_to i.name, tag_path(i)
+    - unless i.leaf?
+      = render 'shop/shared/tags-bar', items: i.children, depth:depth+1

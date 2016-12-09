@@ -3,15 +3,14 @@ require_dependency 'shop/application_controller'
 module Shop
   class VariantsController < ApplicationController
 
-
     def hot
-      @products = Product.order(hot_order: :desc).page params[:page]
+      @variants = Variant.order(hot_order: :desc).page params[:page]
       @title = t '.title'
       render 'list', layout: 'shop/application'
     end
 
     def latest
-      @products = Product.order(latest_order: :desc).page params[:page]
+      @variants = Variant.order(latest_order: :desc).page params[:page]
       @title = t '.title'
       render 'list', layout: 'shop/application'
     end
@@ -34,7 +33,7 @@ module Shop
           Property.where(shop_variant_id: @variant.id).destroy_all
           items.each {|k, v| Property.create shop_variant_id: @variant.id, shop_property_field_id: k[2..-1], value: v}
 
-          redirect_to variants_path(shop_prodcut_id:@variant.shop_product_id)
+          redirect_to variants_path(shop_product_id:@variant.shop_product_id)
         else
           @property_fields = PropertyField.where(lang:I18n.locale).order(sort_order: :asc)
           render layout:'dashboard'

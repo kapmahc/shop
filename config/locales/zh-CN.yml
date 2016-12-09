@@ -77,6 +77,8 @@ zh-CN:
         title: 评论列表
       product-card:
         cart: 添加到购物车
+      variant-card:
+        cart: 添加到购物车
     home:
       title: 在线购物
       description: 在线购物模块
@@ -137,10 +139,6 @@ zh-CN:
       show:
         add_comment: 添加评论
         add_to_cart: 添加到购物车
-      hot:
-        title: 优惠活动
-      latest:
-        title: 新品上市
     variants:
       index:
         title: 型号管理
@@ -150,6 +148,10 @@ zh-CN:
         title: 修改型号[%{id}]
       properties:
         title: 属性列表
+      hot:
+        title: 优惠活动
+      latest:
+        title: 新品上市
     property_fields:
       index:
         title: 属性管理

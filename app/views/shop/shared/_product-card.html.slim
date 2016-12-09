@@ -1,15 +1,16 @@
 div class="card"
   - img = item.pictures.first
-  - vat = item.variants.first
   - unless img.nil?
     = image_tag img.avatar.url, alt: img.title, class:'card-img-top'
   div class="card-block"
     h4 class="card-title" #{item.name}
     p class="card-text markdown" #{item.description}
   ul class="list-group list-group-flush"
-    - unless vat.nil?
-      li class="list-group-item" #{t 'activerecord.attributes.shop/variant.price'} #{vat.price.format}
+    - item.variants.each do |i|
+      li class="list-group-item"
+        | #{i.name}: #{i.price.format}
+        | &nbsp;
+        = link_to t('.cart'), cart_variant_path(i), method: :post, class:'card-link'
   div class="card-block"
     = link_to t('buttons.view'), product_path(item), class:'card-link'
-    - unless vat.nil?
-      = link_to t('.cart'), cart_variant_path(vat), method: :post, class:'card-link'
+

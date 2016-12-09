@@ -26,10 +26,7 @@ Shop::Engine.routes.draw do
     resources :comments, except: [:show]
     resources :orders, except: [:destroy]
 
-# todo
-    get 'profile' => 'profile#index'
-
   end
 
-  root 'products#hot'
+  root 'home#index'
 end

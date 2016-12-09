@@ -6,4 +6,14 @@ div class="row"
   div class="col-md-8"
     p class="markdown" #{@product.description}
 
+br
+h3 #{t 'activerecord.attributes.shop/product.variants'}
+hr
+div class="row"
+  - @product.variants.each do |i|
+    div class="col-md-4"
+      ul class="list-group"
+        -i.properties.each do |j|
+          li class="list-group-item" #{j.field.name}: #{j.value}
+
 

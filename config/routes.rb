@@ -14,6 +14,7 @@ Shop::Engine.routes.draw do
       end
 
       member do
+        # todo
         %w(hot latest).each do |act|
           get act
           post act
@@ -21,11 +22,16 @@ Shop::Engine.routes.draw do
       end
     end
 
-    resources :variants, except: [:show]
-    resources :properties, except: [:show]
+    resources :variants, except: [:show] do
+      member do
+        get 'properties'
+        post 'properties'
+      end
+    end
+
     resources :property_fields, except: [:show]
 
-
+# todo
     get 'profile' => 'profile#index'
 
 

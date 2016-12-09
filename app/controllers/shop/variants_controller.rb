@@ -3,6 +3,26 @@ require_dependency 'shop/application_controller'
 module Shop
   class VariantsController < ApplicationController
 
+    def properties
+      @variant = Variant.find params[:id]
+      authorize @variant, :edit?
+
+      case request.method
+        when 'POST'
+          items = params.require :items
+          puts '#'*80, items
+          Property.where(shop_variant_id: @variant.id).destroy_all
+          items.each {|k, v| Property.create shop_variant_id: @variant.id, shop_property_field_id: k[2..-1], value: v}
+
+          redirect_to variants_path(shop_prodcut_id:@variant.shop_product_id)
+        else
+          @property_fields = PropertyField.where(lang:I18n.locale).order(sort_order: :asc)
+          render layout:'dashboard'
+      end
+
+
+    end
+
     def new
       @variant = Variant.new params.permit(:shop_product_id)
       authorize @variant

@@ -20,12 +20,12 @@ table class="table table-hover table-bordered"
         td #{i.price}
         td #{i.cost_price}
         td
-          ul
+          ul class="list-group"
             -i.properties.each do |j|
-              li #{j.field.key}: #{j.value}
+              li class="list-group-item" #{j.field.name}: #{j.value}
         td
           div class="btn-group btn-group-sm"
             = link_to t('buttons.view'), product_path(i.product), class:'btn btn-info', target: :_blank
             = link_to t('buttons.edit'), edit_variant_path(i), class:'btn btn-warning'
-            = link_to t('buttons.edit'), edit_variant_path(i), class:'btn btn-secondary'
+            = link_to t('activerecord.attributes.shop/variant.properties'), properties_variant_path(i), class:'btn btn-secondary'
             = render 'shared/btn-remove', url:variant_path(i)

@@ -5,6 +5,7 @@ table class="table table-hover table-bordered"
   thead
     tr
       th #{t 'activerecord.attributes.shop/product.name'}
+      th #{t 'activerecord.attributes.shop/product.attachments'}
       th
         = t 'buttons.manage'
         | &nbsp;
@@ -13,6 +14,10 @@ table class="table table-hover table-bordered"
     -@products.each do |i|
       tr
         th scope="row" #{i.name}
+        td
+          div class="list-group"
+            -i.attachments.each do |j|
+              =link_to j.title, j.avatar.url, class:'list-group-item', target: :_blank
         td
           div class="btn-group btn-group-sm"
             = link_to t('buttons.view'), product_path(i), class:'btn btn-info', target: :_blank

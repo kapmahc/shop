@@ -38,7 +38,7 @@ zh-CN:
         tags: 分类
         comments: 相关评论
         upload: 上传附件
-        variants: 型号列表
+        variants: 型号
       shop/property:
         value: 值
       shop/property_field:
@@ -47,7 +47,7 @@ zh-CN:
       shop/variant:
         sku: 编号
         name: 名称
-        properties: 属性列表
+        properties: 属性
         price: 售价
         cost_price: 成本价
   shop:
@@ -115,6 +115,8 @@ zh-CN:
         title: 添加型号
       edit:
         title: 修改型号[%{id}]
+      properties:
+        title: 属性列表
     property_fields:
       index:
         title: 属性管理

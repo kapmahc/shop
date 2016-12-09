@@ -1,0 +1,9 @@
+h2 #{t '.title'}
+hr
+
+= simple_form_for :items do |f|
+  - @property_fields.each do |i|
+    - item = Shop::Property.where(shop_variant_id: @variant.id, shop_property_field_id: i.id).first
+    = f.input "f_#{i.id}", label: i.name, required: false, input_html:{value: (item.nil? ? '' : item.value)}
+
+  = f.button :submit, t('buttons.submit')

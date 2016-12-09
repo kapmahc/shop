@@ -40,6 +40,8 @@ zh-CN:
         upload: 上传附件
         variants: 型号
         comments: 评论列表
+        hot_order: 热门序号
+        latest_order: 新品序号
       shop/property:
         value: 值
       shop/property_field:
@@ -115,7 +117,12 @@ zh-CN:
       edit:
         title: 修改商品[%{id}]
       show:
-        comment: 添加评论
+        add_comment: 添加评论
+        add_to_cart: 添加到购物车
+      hot:
+        title: 优惠活动
+      latest:
+        title: 新品上市
     variants:
       index:
         title: 型号管理

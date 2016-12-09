@@ -5,7 +5,7 @@ div class="row"
     = render 'shared/carousel', id: "product-#{@product.id}", pictures: @product.pictures
     br
     -if policy(Shop::Comment.new).new?
-      = link_to t('.comment'), new_comment_path(shop_product_id:@product.id)
+      = link_to t('.add_comment'), new_comment_path(shop_product_id:@product.id)
   div class="col-md-8"
     p class="markdown" #{@product.description}
 br
@@ -17,9 +17,13 @@ div class="row"
       div class="card"
         div class="card-block"
           h4 class="card-title" #{i.name}
-          p class="card-text"
-            -i.properties.each do |j|
+          p class="card-text" #{t 'activerecord.attributes.shop/variant.price'} #{i.price.format}
+        ul class="list-group list-group-flush"
+          -i.properties.each do |j|
+            li class="list-group-item"
               | #{j.field.name}: #{j.value}
+        div class="card-block"
+          = link_to t('.add_to_cart'), '/', class:'card-link'
 
 
 = render 'shop/shared/comments', comments:@product.comments

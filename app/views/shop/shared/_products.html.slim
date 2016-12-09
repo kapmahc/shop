@@ -1,0 +1,16 @@
+div class="row"
+  - products.each do |i|
+    div class="col-md-4"
+      div class="card"
+        - img = i.pictures.first
+        - unless img.nil?
+          = image_tag img.avatar.url, alt: img.title, class:'card-img-top'
+        div class="card-block"
+          h4 class="card-title" #{i.name}
+          p class="card-text markdown" #{i.description}
+        ul class="list-group list-group-flush"
+          - v = i.variants.first
+          - unless v.nil?
+            li class="list-group-item" #{t 'activerecord.attributes.shop/variant.price'} #{v.price.format}
+        div class="card-block"
+          = link_to t('buttons.view'), product_path(i), class:'card-link'

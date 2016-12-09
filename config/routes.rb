@@ -12,14 +12,6 @@ Shop::Engine.routes.draw do
         get 'hot'
         get 'latest'
       end
-
-      member do
-        # todo
-        %w(hot latest).each do |act|
-          get act
-          post act
-        end
-      end
     end
 
     resources :variants, except: [:show] do

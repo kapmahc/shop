@@ -2,7 +2,7 @@ class CreateShopOrders < ActiveRecord::Migration[5.0]
   def change
     create_table :shop_orders do |t|
       t.string :uid, null:false, limit: 36
-      t.string :state, null:false, limit: 16, index:true
+      t.integer :state, null:false
 
       t.monetize :item_total
       t.monetize :total

@@ -42,8 +42,6 @@ zh-CN:
         upload: 上传附件
         variants: 型号
         comments: 评论列表
-        hot_order: 热门序号
-        latest_order: 新品序号
       shop/property:
         value: 值
       shop/property_field:
@@ -55,6 +53,12 @@ zh-CN:
         properties: 属性
         price: 售价
         cost_price: 成本价
+        hot_order: 热门序号
+        latest_order: 新品序号
+        state: 状态
+        states:
+          online: 在线
+          out_of_stock: 缺货
       shop/comment:
         body: 正文
       shop/line_item:

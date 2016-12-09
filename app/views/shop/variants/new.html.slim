@@ -5,7 +5,10 @@ hr
   = f.input :shop_product_id, as: :hidden
   = f.input :sku
   = f.input :name
+  = f.input :state, as: :select, collection: Shop::Variant.states.keys, include_blank: false
   = f.input :price
   = f.input :cost_price
+  = f.input :latest_order, collection: -10..10
+  = f.input :hot_order, collection: -10..10
 
   = f.button :submit, t('buttons.submit')

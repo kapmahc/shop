@@ -3,17 +3,6 @@ require_dependency 'shop/application_controller'
 module Shop
   class ProductsController < ApplicationController
 
-    def hot
-      @products = Product.order(hot_order: :desc).page params[:page]
-      @title = t '.title'
-      render 'list', layout: 'shop/application'
-    end
-
-    def latest
-      @products = Product.order(latest_order: :desc).page params[:page]
-      @title = t '.title'
-      render 'list', layout: 'shop/application'
-    end
 
     def show
       @product = Product.find params[:id]
@@ -74,7 +63,7 @@ module Shop
 
     private
     def product_params
-      params.require(:product).permit(:name, :description, :hot_order, :latest_order, tag_ids: [])
+      params.require(:product).permit(:name, :description, tag_ids: [])
     end
   end
 end

@@ -7,6 +7,9 @@ table class="table table-hover table-bordered"
       th #{t 'activerecord.attributes.shop/variant.name'}
       th #{t 'activerecord.attributes.shop/variant.price'}
       th #{t 'activerecord.attributes.shop/variant.cost_price'}
+      th #{t 'activerecord.attributes.shop/variant.hot_order'}
+      th #{t 'activerecord.attributes.shop/variant.latest_order'}
+      th #{t 'activerecord.attributes.shop/variant.state'}
       th #{t 'activerecord.attributes.shop/variant.properties'}
       th
         = t 'buttons.manage'
@@ -19,6 +22,9 @@ table class="table table-hover table-bordered"
         td #{i.name}
         td #{i.price.format}
         td #{i.cost_price.format}
+        td #{i.hot_order}
+        td #{i.latest_order}
+        td #{i.state}
         td
           ul class="list-group"
             -i.properties.each do |j|

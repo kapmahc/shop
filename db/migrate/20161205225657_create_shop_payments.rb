@@ -2,7 +2,7 @@ class CreateShopPayments < ActiveRecord::Migration[5.0]
   def change
     create_table :shop_payments do |t|
 
-      t.string :state, null:false, limit: 16, index:true
+      t.integer :state, null:false
       t.string :response_code
       t.string :avs_response
 

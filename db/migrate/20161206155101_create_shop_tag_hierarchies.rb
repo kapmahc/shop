@@ -8,9 +8,9 @@ class CreateShopTagHierarchies < ActiveRecord::Migration
 
     add_index :shop_tag_hierarchies, [:ancestor_id, :descendant_id, :generations],
       unique: true,
-      name: "tag_anc_desc_idx"
+      name: 'shop_tag_anc_desc_idx'
 
     add_index :shop_tag_hierarchies, [:descendant_id],
-      name: "tag_desc_idx"
+      name: 'shop_tag_desc_idx'
   end
 end

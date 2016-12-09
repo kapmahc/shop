@@ -5,8 +5,6 @@ table class="table table-hover table-bordered"
   thead
     tr
       th #{t 'activerecord.attributes.shop/product.name'}
-      th #{t 'activerecord.attributes.shop/product.hot_order'}
-      th #{t 'activerecord.attributes.shop/product.latest_order'}
       th #{t 'activerecord.attributes.shop/product.attachments'}
       th
         = t 'buttons.manage'
@@ -16,8 +14,6 @@ table class="table table-hover table-bordered"
     -@products.each do |i|
       tr
         th scope="row" #{i.name}
-        td #{i.hot_order}
-        td #{i.latest_order}
         td
           div class="list-group"
             -i.attachments.each do |j|

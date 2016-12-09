@@ -3,6 +3,19 @@ require_dependency 'shop/application_controller'
 module Shop
   class VariantsController < ApplicationController
 
+
+    def hot
+      @products = Product.order(hot_order: :desc).page params[:page]
+      @title = t '.title'
+      render 'list', layout: 'shop/application'
+    end
+
+    def latest
+      @products = Product.order(latest_order: :desc).page params[:page]
+      @title = t '.title'
+      render 'list', layout: 'shop/application'
+    end
+
     def cart
       @variant = Variant.find params[:id]
       cart = session[:variants_cart] || []
@@ -37,7 +50,7 @@ module Shop
     end
 
     def create
-      @variant = Variant.new params.require(:variant).permit(:shop_product_id, :name, :price, :cost_price, :sku)
+      @variant = Variant.new params.require(:variant).permit(:shop_product_id, :name, :price, :cost_price, :sku, :hot_order, :latest_order, :state)
       authorize @variant
 
       if @variant.save
@@ -57,7 +70,7 @@ module Shop
     def update
       @variant = Variant.find params[:id]
       authorize @variant
-      if @variant.update params.require(:variant).permit(:name, :price, :cost_price, :sku)
+      if @variant.update params.require(:variant).permit(:name, :price, :cost_price, :sku, :hot_order, :latest_order, :state)
         redirect_to variants_path(shop_product_id:@variant.product.id)
       else
         render 'edit', layout:'dashboard'

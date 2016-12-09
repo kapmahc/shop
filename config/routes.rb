@@ -7,14 +7,14 @@ Shop::Engine.routes.draw do
     resources :payment_methods, except: [:show, :destroy]
     resources :addresses, except: [:show]
     resources :tags
-    resources :products do
+    resources :products
+
+    resources :variants, except: [:show] do
       collection do
         get 'hot'
         get 'latest'
       end
-    end
 
-    resources :variants, except: [:show] do
       member do
         get 'properties'
         post 'properties'

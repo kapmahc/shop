@@ -18,6 +18,7 @@ Shop::Engine.routes.draw do
       member do
         get 'properties'
         post 'properties'
+        post 'cart'
       end
     end
 

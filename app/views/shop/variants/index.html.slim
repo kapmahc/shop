@@ -17,8 +17,8 @@ table class="table table-hover table-bordered"
       tr
         th scope="row" #{i.sku}
         td #{i.name}
-        td #{i.price}
-        td #{i.cost_price}
+        td #{i.price.format}
+        td #{i.cost_price.format}
         td
           ul class="list-group"
             -i.properties.each do |j|

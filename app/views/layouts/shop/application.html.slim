@@ -3,16 +3,20 @@ html
   head
     = display_meta_tags site: Setting.site_info(:title), title: @title, keywords: Setting.site_info(:keywords), description: Setting.site_info(:description), author: Setting.site_info(:author)
     = render 'shared/meta'
+    = stylesheet_link_tag 'shop/application', media: 'all', 'data-turbolinks-track'=> 'reload'
   body
     = render 'shared/header'
     div class="container-fluid"
       div class="row"
-        div class="col-md-9"
+        div class="col-md-2"
+          h4 #{t '.tags'}
+          hr
+          = render 'shop/shared/tags-bar', items:Shop::Tag.roots, depth:1
+        div class="col-md-8"
           = render 'shared/flash'
           = yield
-        div class="col-md-3"
-          h4 #{t '.cart'}
-          hr
+        div class="col-md-2"
+          = render 'shop/shared/variants-bar', title:t('.cart'), ids:session[:variants_cart]
           br
           = render 'shop/shared/products-bar', title:t('.history'), ids:session[:products_history]
 

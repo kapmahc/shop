@@ -2,6 +2,11 @@ require_dependency 'shop/application_controller'
 
 module Shop
   class TagsController < ApplicationController
+    def show
+      @tag = Tag.find params[:id]
+      render layout:'shop/application'
+    end
+
     def new
       @tag = Tag.new params.permit(:parent_id).merge(sort_order:0)
       authorize @tag

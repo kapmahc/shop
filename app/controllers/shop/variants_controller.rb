@@ -3,6 +3,14 @@ require_dependency 'shop/application_controller'
 module Shop
   class VariantsController < ApplicationController
 
+    def cart
+      @variant = Variant.find params[:id]
+      cart = session[:variants_cart] || []
+      cart.unshift @variant.id
+      session[:variants_cart] = cart.uniq
+      redirect_to product_path(@variant.product)
+    end
+
     def properties
       @variant = Variant.find params[:id]
       authorize @variant, :edit?
@@ -10,7 +18,6 @@ module Shop
       case request.method
         when 'POST'
           items = params.require :items
-          puts '#'*80, items
           Property.where(shop_variant_id: @variant.id).destroy_all
           items.each {|k, v| Property.create shop_variant_id: @variant.id, shop_property_field_id: k[2..-1], value: v}
 

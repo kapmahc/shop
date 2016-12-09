@@ -17,12 +17,10 @@ module Shop
 
     def show
       @product = Product.find params[:id]
-      cart = session[:products_history]
-      if cart.nil?
-        cart = []
-      end
-      cart.unshift @product.id
-      session[:products_history] = cart.uniq      
+      history = session[:products_history] || []
+      history.unshift @product.id
+      session[:products_history] = history.uniq
+      render layout: 'shop/application'
     end
 
     def new

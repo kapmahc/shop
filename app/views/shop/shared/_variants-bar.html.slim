@@ -1,0 +1,7 @@
+h4 #{title}
+hr
+-unless ids.nil?
+  div class="list-group"
+    - ids.each do |i|
+      - v = Shop::Variant.find i
+      = link_to v.name, product_path(v.product), class:'list-group-item list-group-item-action'

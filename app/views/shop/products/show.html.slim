@@ -23,7 +23,7 @@ div class="row"
             li class="list-group-item"
               | #{j.field.name}: #{j.value}
         div class="card-block"
-          = link_to t('.add_to_cart'), '/', class:'card-link'
+          = link_to t('.add_to_cart'), cart_variant_path(i), method: :post, class:'card-link'
 
 
 = render 'shop/shared/comments', comments:@product.comments

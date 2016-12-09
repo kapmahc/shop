@@ -16,7 +16,7 @@ html
           = render 'shared/flash'
           = yield
         div class="col-md-2"
-          = render 'shop/shared/variants-bar', title:t('.cart'), ids:session[:variants_cart]
+          = render 'shop/shared/variants-cart', title:t('.cart'), ids:session[:variants_cart]
           - if session[:variants_cart]
             p class="float-xs-right"
               = link_to t('.checkout'), new_order_path

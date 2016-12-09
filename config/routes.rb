@@ -18,13 +18,19 @@ Shop::Engine.routes.draw do
       member do
         get 'properties'
         post 'properties'
+
         post 'cart'
+        delete 'cart'
       end
     end
 
     resources :property_fields, except: [:show]
     resources :comments, except: [:show]
-    resources :orders, except: [:destroy]
+    resources :orders, except: [:destroy] do
+      member do
+        get 'pay'
+      end
+    end
 
   end
 

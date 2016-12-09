@@ -13,5 +13,5 @@ div class="card"
 
   div class="card-block"
     = link_to t('buttons.view'), product_path(item.product), class:'card-link', target: :_blank
-    - if item.online?
+    - if cart && item.online?
       = link_to t('.cart'), cart_variant_path(item), class:'card-link', method: :post

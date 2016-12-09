@@ -18,9 +18,15 @@ module Shop
     def cart
       @variant = Variant.find params[:id]
       cart = session[:variants_cart] || []
-      cart.unshift @variant.id
+      case request.request_method
+        when 'POST'
+          cart.unshift @variant.id
+        when 'DELETE'
+          cart.delete @variant.id
+        else
+      end
       session[:variants_cart] = cart.uniq
-      # redirect_to product_path(@variant.product)
+
       redirect_to :back
     end
 

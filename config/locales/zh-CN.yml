@@ -173,7 +173,7 @@ zh-CN:
         title: 我的购物车
         variants: 购物清单
         address: 收件地址
-        new_address: 添加新地址
+        new_address: 使用新地址
       edit:
         title: 修改订单[%{uid}]
     dashboard:

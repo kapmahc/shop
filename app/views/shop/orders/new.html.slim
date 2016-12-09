@@ -13,26 +13,43 @@ hr
         tr
           th scope="row" #{i.variant.sku}
           td
-            = render 'shop/shared/variant-card', item: i.variant
+            = render 'shop/shared/variant-card', item: i.variant, cart:false
           td
-            = label :quantity, t('activerecord.attributes.shop/line_item.quantity')
+            = label_tag :quantity, t('activerecord.attributes.shop/line_item.quantity')
             = number_field :quantity, "v_#{i.variant.id}", class:'form-control', value:i.quantity
             br
-            div class="btn-group btn-group-sm"
-              = link_to t('buttons.remove'), '/', class:'btn btn-danger'
+            = link_to t('buttons.remove'), cart_variant_path(i.variant), class:'btn btn-danger btn-sm', method: :delete, data: { confirm: t('messages.are_you_sure')}
 
   br
   fieldset class="form-group"
-    legend
-      = t '.address'
-      | &nbsp;
-      = link_to t('buttons.new'), new_address_path, target: :_blank
-
+    legend #{t '.address'}
     - @addresses.each do |i|
       div class="form-check"
         label class="form-check-label"
-          = radio_button_tag :address, i.id, i.id == @order.shop_address_id, class:'form-check-input'
+          = radio_button_tag :address, i.id, false, class:'form-check-input'
           | #{i.full_name} #{i.phone} #{i.content}
+    div class="form-check"
+      label class="form-check-label"
+        = radio_button_tag :address, 0, true, class:'form-check-input'
+        = t '.new_address'
 
-  br
+    div class="form-group"
+      = label_tag :full_name, t('activerecord.attributes.shop/address.full_name')
+      = text_field_tag :full_name, '', {class: 'form-control'}
+    div class="form-group"
+      = label_tag :content, t('activerecord.attributes.shop/address.country_code')
+      = country_select :country, :code, {priority_countries: %w(US CN TW)}, class:'form-control'
+    div class="form-group"
+      = label_tag :phone, t('activerecord.attributes.shop/address.phone')
+      = text_field_tag :phone, '', class: 'form-control'
+    div class="form-group"
+      = label_tag :zip_code, t('activerecord.attributes.shop/address.zip_code')
+      = text_field_tag :zip_code, '', class: 'form-control'
+    div class="form-group"
+      = label_tag :content, t('activerecord.attributes.shop/address.content')
+      = text_field_tag :content, '', class: 'form-control'
+
+
+
+
   =f.button :submit, t('buttons.submit')

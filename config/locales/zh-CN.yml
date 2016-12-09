@@ -1,5 +1,7 @@
 zh-CN:
   activerecord:
+    models:
+      shop/product: 商品
     attributes:
       money/currency:
         name: 名称
@@ -55,17 +57,21 @@ zh-CN:
         cost_price: 成本价
       shop/comment:
         body: 正文
+      shop/line_item:
+        quantity: 数量
+        price: 单价
   layouts:
     shop:
       application:
         history: 浏览记录
         cart: 购物车
         tags: 商品目录
+        checkout: 去结算
   shop:
     shared:
       comments:
         title: 评论列表
-      products:
+      product-card:
         cart: 添加到购物车
     home:
       title: 在线购物
@@ -154,5 +160,15 @@ zh-CN:
         title: 编辑评论[%{id}]
       new:
         title: 撰写评论
+    orders:
+      index:
+        title: 我的订单
+      new:
+        title: 我的购物车
+        variants: 购物清单
+        address: 收件地址
+        new_address: 添加新地址
+      edit:
+        title: 修改订单[%{uid}]
     dashboard:
       title: 在线商城

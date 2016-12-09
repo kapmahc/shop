@@ -1,0 +1,11 @@
+div class="card"
+  - img = item.product.pictures.first
+  - unless img.nil?
+    = image_tag img.avatar.url, alt: img.title, class:'card-img-top'
+  div class="card-block"
+    h4 class="card-title" #{item.name} - #{item.product.name}
+    p class="card-text markdown" #{item.product.description}
+  ul class="list-group list-group-flush"
+    li class="list-group-item" #{t 'activerecord.attributes.shop/variant.price'} #{item.price.format}
+  div class="card-block"
+    = link_to t('buttons.view'), product_path(item), class:'card-link', target: :_blank

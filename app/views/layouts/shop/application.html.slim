@@ -17,6 +17,9 @@ html
           = yield
         div class="col-md-2"
           = render 'shop/shared/variants-bar', title:t('.cart'), ids:session[:variants_cart]
+          - if session[:variants_cart]
+            p class="float-xs-right"
+              = link_to t('.checkout'), new_order_path
           br
           = render 'shop/shared/products-bar', title:t('.history'), ids:session[:products_history]
 

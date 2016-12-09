@@ -23,14 +23,11 @@ Shop::Engine.routes.draw do
     end
 
     resources :property_fields, except: [:show]
-
     resources :comments, except: [:show]
+    resources :orders, except: [:destroy]
 
 # todo
     get 'profile' => 'profile#index'
-
-
-    resources :orders
 
   end
 

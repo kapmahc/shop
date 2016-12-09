@@ -11,6 +11,7 @@ class CreateShopVariants < ActiveRecord::Migration[5.0]
       t.decimal :height, precision: 12, scale: 2
       t.decimal :width, precision: 12, scale: 2
       t.decimal :length, precision: 12, scale: 2
+      t.string :state, null:false, limit: 16, index:true
 
       t.belongs_to :shop_product, foreign_key: true
 

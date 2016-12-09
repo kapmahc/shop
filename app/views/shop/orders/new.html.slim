@@ -1,0 +1,38 @@
+h2 #{@title = t '.title'}
+hr
+= simple_form_for @order do |f|
+  h4 #{t '.variants'}
+  table class="table table-hover table-bordered"
+    thead
+      tr
+        th #{t 'activerecord.attributes.shop/variant.sku'}
+        th #{t 'activerecord.models.shop/product'}
+        th width="20%" #{t 'buttons.manage'}
+    tbody
+      -@order.line_items.each do |i|
+        tr
+          th scope="row" #{i.variant.sku}
+          td
+            = render 'shop/shared/variant-card', item: i.variant
+          td
+            = label :quantity, t('activerecord.attributes.shop/line_item.quantity')
+            = number_field :quantity, "v_#{i.variant.id}", class:'form-control', value:i.quantity
+            br
+            div class="btn-group btn-group-sm"
+              = link_to t('buttons.remove'), '/', class:'btn btn-danger'
+
+  br
+  fieldset class="form-group"
+    legend
+      = t '.address'
+      | &nbsp;
+      = link_to t('buttons.new'), new_address_path, target: :_blank
+
+    - @addresses.each do |i|
+      div class="form-check"
+        label class="form-check-label"
+          = radio_button_tag :address, i.id, i.id == @order.shop_address_id, class:'form-check-input'
+          | #{i.full_name} #{i.phone} #{i.content}
+
+  br
+  =f.button :submit, t('buttons.submit')

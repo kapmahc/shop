@@ -24,7 +24,7 @@ table class="table table-hover table-bordered"
         td #{i.cost_price.format}
         td #{i.hot_order}
         td #{i.latest_order}
-        td #{i.state.humanize}
+        td #{t "activerecord.attributes.shop/variant.states.#{i.state}"}
         td
           ul class="list-group"
             -i.properties.each do |j|

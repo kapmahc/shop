@@ -1,7 +1,15 @@
 module Shop
   class Order < ApplicationRecord
-    enum state: {cart: 100, pending:200, delivery:300, confirm:400, complete: 500}
+    enum state: {
+             pending:100,
+             paid:200,
+             processing:300,
+             delivery:400,
+             confirm:500,
+             complete: 600,
+         }
 
+    belongs_to :user
     belongs_to :address, class_name: 'Shop::Address', foreign_key: 'shop_address_id'
     has_many :line_items, class_name: 'Shop::LineItem', foreign_key: 'shop_order_id'
 

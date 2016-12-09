@@ -1,4 +1,5 @@
 require_dependency 'shop/application_controller'
+require 'country_select'
 
 module Shop
   class OrdersController < ApplicationController
@@ -16,8 +17,9 @@ module Shop
     end
 
     def create
-      @order = Order.new
+      @order = Order.new user:current_user
       authorize @order
+
       @addresses = Address.where(user_id:current_user.id)
       @order.line_items = params.fetch(:quantity).map do |k, v|
         vat = Variant.find k[2..-1]
@@ -51,7 +53,7 @@ module Shop
 
       # todo cupon
       @order.payment_total = @order.total
-      @order.cart!
+      @order.pending!
 
       if @order.save
         redirect_to pay_order_path(@order)
@@ -63,6 +65,9 @@ module Shop
     end
 
     def index
+      @order = Order.new
+      authorize @order
+      @orders = Order.where(user_id: current_user.id).order(updated_at: :desc)
     end
 
   end

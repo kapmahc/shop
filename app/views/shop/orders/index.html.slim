@@ -1,0 +1,24 @@
+h2 #{@title = t '.title'}
+hr
+table class="table table-hover table-bordered"
+  thead
+    tr
+      th #{t 'activerecord.attributes.shop/order.uid'}
+      th #{t 'activerecord.attributes.shop/order.total'}
+      th #{t 'activerecord.attributes.shop/order.state'}
+      th #{t 'activerecord.attributes.shop/order.created_at'}
+      th #{t 'buttons.manage'}
+  tbody
+    -@orders.each do |i|
+      tr
+        th scope="row" #{i.uid}
+        td #{i.total.format}
+        td #{i.state}
+        td #{time_ago_in_words i.created_at}
+        td
+          div class="btn-group btn-group-sm"
+            = link_to t('buttons.view'), product_path(i), class:'btn btn-info', target: :_blank
+            = link_to t('buttons.edit'), edit_product_path(i), class:'btn btn-warning'
+            = link_to t('activerecord.attributes.shop/product.variants'), variants_path(shop_product_id:i.id), class:'btn btn-primary', target: :_blank
+            = link_to t('activerecord.attributes.shop/product.attachments'), main_app.attachments_path(resource_type:i.class.name, resource_id:i.id), class:'btn btn-secondary', target: :_blank
+            = render 'shared/btn-remove', url:product_path(i)

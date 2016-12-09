@@ -57,13 +57,21 @@ zh-CN:
         latest_order: 新品序号
         state: 状态
         states:
-          online: 在线
+          online: 有货
           out_of_stock: 缺货
       shop/comment:
         body: 正文
       shop/line_item:
         quantity: 数量
         price: 单价
+      shop/order:
+        line_items: 细项
+        uid: 序号
+        state: 状态
+        total: 总价
+        created_at: 创建时间
+        states:
+          cart:
   layouts:
     shop:
       application:

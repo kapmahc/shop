@@ -31,6 +31,8 @@ Shop::Engine.routes.draw do
 
     resources :property_fields, except: [:show]
 
+    resources :comments, except: [:show]
+
 # todo
     get 'profile' => 'profile#index'
 

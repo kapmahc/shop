@@ -39,6 +39,7 @@ zh-CN:
         comments: 相关评论
         upload: 上传附件
         variants: 型号
+        comments: 评论列表
       shop/property:
         value: 值
       shop/property_field:
@@ -50,7 +51,12 @@ zh-CN:
         properties: 属性
         price: 售价
         cost_price: 成本价
+      shop/comment:
+        body: 正文
   shop:
+    shared:
+      comments:
+        title: 评论列表
     home:
       title: 在线购物
       description: 在线购物模块
@@ -108,6 +114,8 @@ zh-CN:
         title: 添加商品
       edit:
         title: 修改商品[%{id}]
+      show:
+        comment: 添加评论
     variants:
       index:
         title: 型号管理
@@ -124,5 +132,12 @@ zh-CN:
         title: 添加属性
       edit:
         title: 修改属性[%{id}]
+    comments:
+      index:
+        title: 评论列表
+      edit:
+        title: 编辑评论[%{id}]
+      new:
+        title: 撰写评论
     dashboard:
       title: 在线商城

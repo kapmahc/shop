@@ -3,17 +3,24 @@ hr
 div class="row"
   div class="col-md-4"
     = render 'shared/carousel', id: "product-#{@product.id}", pictures: @product.pictures
+    br
+    -if policy(Shop::Comment.new).new?
+      = link_to t('.comment'), new_comment_path(shop_product_id:@product.id)
   div class="col-md-8"
     p class="markdown" #{@product.description}
-
 br
 h3 #{t 'activerecord.attributes.shop/product.variants'}
 hr
 div class="row"
   - @product.variants.each do |i|
     div class="col-md-4"
-      ul class="list-group"
-        -i.properties.each do |j|
-          li class="list-group-item" #{j.field.name}: #{j.value}
+      div class="card"
+        div class="card-block"
+          h4 class="card-title" #{i.name}
+          p class="card-text"
+            -i.properties.each do |j|
+              | #{j.field.name}: #{j.value}
 
+
+= render 'shop/shared/comments', comments:@product.comments
 

@@ -1,0 +1,17 @@
+br
+h3 #{t '.title'}
+hr
+- comments.order(updated_at: :desc).each do |i|
+  blockquote class="blockquote"
+    p class="mb-0 markdown" #{i.body}
+    footer class="blockquote-footer"
+      = time_ago_in_words i.updated_at
+      cite
+        | &nbsp;
+        = link_to t('buttons.view'), product_path(i.product)
+        - if policy(i).edit?
+          | &nbsp;
+          =link_to t('buttons.edit'), edit_comment_path(i)
+        - if policy(i).destroy?
+          | &nbsp;
+          =link_to t('buttons.remove'), comment_path(i), method: :delete, data: { confirm: t('messages.are_you_sure')}

@@ -20,7 +20,8 @@ module Shop
       cart = session[:variants_cart] || []
       cart.unshift @variant.id
       session[:variants_cart] = cart.uniq
-      redirect_to product_path(@variant.product)
+      # redirect_to product_path(@variant.product)
+      redirect_to :back
     end
 
     def properties

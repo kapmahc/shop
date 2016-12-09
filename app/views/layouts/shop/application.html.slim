@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    = display_meta_tags site: Setting.site_info(:title), title: @title, keywords: Setting.site_info(:keywords), description: Setting.site_info(:description), author: Setting.site_info(:author)
+    = render 'shared/meta'
+  body
+    = render 'shared/header'
+    div class="container-fluid"
+      div class="row"
+        div class="col-md-9"
+          = render 'shared/flash'
+          = yield
+        div class="col-md-3"
+          h4 #{t '.cart'}
+          hr
+          br
+          = render 'shop/shared/products-bar', title:t('.history'), ids:session[:products_history]
+
+      = render 'shared/footer'

@@ -55,6 +55,11 @@ zh-CN:
         cost_price: 成本价
       shop/comment:
         body: 正文
+  layouts:
+    shop:
+      application:
+        history: 浏览记录
+        cart: 购物车
   shop:
     shared:
       comments:

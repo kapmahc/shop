@@ -6,17 +6,23 @@ module Shop
     def hot
       @products = Product.order(hot_order: :desc).page params[:page]
       @title = t '.title'
-      render 'list'
+      render 'list', layout: 'shop/application'
     end
 
     def latest
       @products = Product.order(latest_order: :desc).page params[:page]
       @title = t '.title'
-      render 'list'
+      render 'list', layout: 'shop/application'
     end
 
     def show
       @product = Product.find params[:id]
+      cart = session[:products_history]
+      if cart.nil?
+        cart = []
+      end
+      cart.unshift @product.id
+      session[:products_history] = cart.uniq      
     end
 
     def new
